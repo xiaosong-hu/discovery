@@ -31,6 +31,7 @@
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
   
   <!-- So that users can add custom icons -->
@@ -42,6 +43,7 @@
     <script src="../_static/documentation_options.js?v=db78e746"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/index';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -198,6 +200,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../components/noise_signals.html">
     Noise and Signal Components
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../components/chromatic_noise.html">
+    Chromatic noise analyses
   </a>
 </li>
 
@@ -397,6 +406,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../components/chromatic_noise.html">
+    Chromatic noise analyses
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../components/priors_spectra.html">
     GP Priors and Spectra
   </a>
@@ -540,12 +556,32 @@
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_ecorr"><code class="docutils literal notranslate"><span class="pre">makegp_ecorr()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_improper"><code class="docutils literal notranslate"><span class="pre">makegp_improper()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_timing"><code class="docutils literal notranslate"><span class="pre">makegp_timing()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.chromatic_quad_basis"><code class="docutils literal notranslate"><span class="pre">chromatic_quad_basis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.getspan"><code class="docutils literal notranslate"><span class="pre">getspan()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.getstart"><code class="docutils literal notranslate"><span class="pre">getstart()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.fourierbasis"><code class="docutils literal notranslate"><span class="pre">fourierbasis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.log_fourierbasis"><code class="docutils literal notranslate"><span class="pre">log_fourierbasis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.log_fourierbasis_dm"><code class="docutils literal notranslate"><span class="pre">log_fourierbasis_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.log_fourierbasis_chrom"><code class="docutils literal notranslate"><span class="pre">log_fourierbasis_chrom()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.log_fourierbasis_chrom_fixed"><code class="docutils literal notranslate"><span class="pre">log_fourierbasis_chrom_fixed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.linBinning"><code class="docutils literal notranslate"><span class="pre">linBinning()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.ridge_kernel"><code class="docutils literal notranslate"><span class="pre">ridge_kernel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.square_exponential_kernel"><code class="docutils literal notranslate"><span class="pre">square_exponential_kernel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.quasi_periodic_kernel"><code class="docutils literal notranslate"><span class="pre">quasi_periodic_kernel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.matern_kernel"><code class="docutils literal notranslate"><span class="pre">matern_kernel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.linear_blocked_interpolation_basis"><code class="docutils literal notranslate"><span class="pre">linear_blocked_interpolation_basis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.custom_blocked_interpolation_basis"><code class="docutils literal notranslate"><span class="pre">custom_blocked_interpolation_basis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_improper_varF"><code class="docutils literal notranslate"><span class="pre">makegp_improper_varF()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.normalise_tm_basis"><code class="docutils literal notranslate"><span class="pre">normalise_tm_basis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.chrom_poly_basis"><code class="docutils literal notranslate"><span class="pre">chrom_poly_basis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_chrom_poly_svd"><code class="docutils literal notranslate"><span class="pre">makegp_chrom_poly_svd()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_timedomain_dm"><code class="docutils literal notranslate"><span class="pre">makegp_timedomain_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.fourierbasis_dm"><code class="docutils literal notranslate"><span class="pre">fourierbasis_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.fourierbasis_chrom"><code class="docutils literal notranslate"><span class="pre">fourierbasis_chrom()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_fourierbasis_dm"><code class="docutils literal notranslate"><span class="pre">make_fourierbasis_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_fourierbasis_chrom"><code class="docutils literal notranslate"><span class="pre">make_fourierbasis_chrom()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.dmfourierbasis"><code class="docutils literal notranslate"><span class="pre">dmfourierbasis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.dmfourierbasis_alpha"><code class="docutils literal notranslate"><span class="pre">dmfourierbasis_alpha()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.dmfourierbasis_solar"><code class="docutils literal notranslate"><span class="pre">dmfourierbasis_solar()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_dmfourierbasis"><code class="docutils literal notranslate"><span class="pre">make_dmfourierbasis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_fourier"><code class="docutils literal notranslate"><span class="pre">makegp_fourier()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makecommongp_fourier"><code class="docutils literal notranslate"><span class="pre">makecommongp_fourier()</span></code></a></li>
@@ -561,15 +597,20 @@
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makeglobalgp_avgcov"><code class="docutils literal notranslate"><span class="pre">makeglobalgp_avgcov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.timeinterpbasis"><code class="docutils literal notranslate"><span class="pre">timeinterpbasis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_timeinterpbasis"><code class="docutils literal notranslate"><span class="pre">make_timeinterpbasis()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_timeinterpbasis_dm"><code class="docutils literal notranslate"><span class="pre">make_timeinterpbasis_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_timeinterpbasis_chromatic"><code class="docutils literal notranslate"><span class="pre">make_timeinterpbasis_chromatic()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_dmtimeinterpbasis"><code class="docutils literal notranslate"><span class="pre">make_dmtimeinterpbasis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.psd2cov"><code class="docutils literal notranslate"><span class="pre">psd2cov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_fftcov"><code class="docutils literal notranslate"><span class="pre">makegp_fftcov()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_fftcov_dm"><code class="docutils literal notranslate"><span class="pre">makegp_fftcov_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_fftcov_chrom"><code class="docutils literal notranslate"><span class="pre">makegp_fftcov_chrom()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makecommongp_fftcov"><code class="docutils literal notranslate"><span class="pre">makecommongp_fftcov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makeglobalgp_fftcov"><code class="docutils literal notranslate"><span class="pre">makeglobalgp_fftcov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makegp_intcov"><code class="docutils literal notranslate"><span class="pre">makegp_intcov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makecommongp_intcov"><code class="docutils literal notranslate"><span class="pre">makecommongp_intcov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.makeglobalgp_intcov"><code class="docutils literal notranslate"><span class="pre">makeglobalgp_intcov()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.powerlaw"><code class="docutils literal notranslate"><span class="pre">powerlaw()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.powerlaw_cutoff"><code class="docutils literal notranslate"><span class="pre">powerlaw_cutoff()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.brokenpowerlaw"><code class="docutils literal notranslate"><span class="pre">brokenpowerlaw()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.freespectrum"><code class="docutils literal notranslate"><span class="pre">freespectrum()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="signals.html#discovery.signals.make_combined_crn"><code class="docutils literal notranslate"><span class="pre">make_combined_crn()</span></code></a></li>
@@ -603,6 +644,7 @@
 <li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.CompoundGP"><code class="docutils literal notranslate"><span class="pre">CompoundGP()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.CompoundDelay"><code class="docutils literal notranslate"><span class="pre">CompoundDelay()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.NoiseMatrix12D_var"><code class="docutils literal notranslate"><span class="pre">NoiseMatrix12D_var()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.NoiseMatrix12D_novar"><code class="docutils literal notranslate"><span class="pre">NoiseMatrix12D_novar()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.NoiseMatrix1D_novar"><code class="docutils literal notranslate"><span class="pre">NoiseMatrix1D_novar</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.SM_1d_fused"><code class="docutils literal notranslate"><span class="pre">SM_1d_fused()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="matrix.html#discovery.matrix.SM_2d_fused"><code class="docutils literal notranslate"><span class="pre">SM_2d_fused()</span></code></a></li>
@@ -645,11 +687,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="solar.html">solar</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.make_solardmfourierbasis"><code class="docutils literal notranslate"><span class="pre">make_solardmfourierbasis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.theta_impact"><code class="docutils literal notranslate"><span class="pre">theta_impact()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.make_solardm"><code class="docutils literal notranslate"><span class="pre">make_solardm()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.chromaticdelay"><code class="docutils literal notranslate"><span class="pre">chromaticdelay()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.make_chromaticdelay"><code class="docutils literal notranslate"><span class="pre">make_chromaticdelay()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.dm_solar"><code class="docutils literal notranslate"><span class="pre">dm_solar()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.fourierbasis_solar_dm"><code class="docutils literal notranslate"><span class="pre">fourierbasis_solar_dm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="solar.html#discovery.solar.makegp_timedomain_solar_dm"><code class="docutils literal notranslate"><span class="pre">makegp_timedomain_solar_dm()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="deterministic.html">deterministic</a><ul>
@@ -659,6 +701,10 @@
 <li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.makedelay_binary_coefficients"><code class="docutils literal notranslate"><span class="pre">makedelay_binary_coefficients()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.cos2comp"><code class="docutils literal notranslate"><span class="pre">cos2comp()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.makefourier_binary"><code class="docutils literal notranslate"><span class="pre">makefourier_binary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.chromatic_exponential"><code class="docutils literal notranslate"><span class="pre">chromatic_exponential()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.chromatic_annual"><code class="docutils literal notranslate"><span class="pre">chromatic_annual()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.chromatic_gaussian"><code class="docutils literal notranslate"><span class="pre">chromatic_gaussian()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="deterministic.html#discovery.deterministic.orthometric_shapiro"><code class="docutils literal notranslate"><span class="pre">orthometric_shapiro()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="likelihood.html">likelihood</a><ul>

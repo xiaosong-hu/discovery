@@ -31,6 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
   
   <!-- So that users can add custom icons -->
@@ -196,6 +197,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="components/noise_signals.html">
     Noise and Signal Components
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="components/chromatic_noise.html">
+    Chromatic noise analyses
   </a>
 </li>
 
@@ -397,6 +405,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="components/chromatic_noise.html">
+    Chromatic noise analyses
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="components/priors_spectra.html">
     GP Priors and Spectra
   </a>
@@ -533,7 +548,7 @@
 <section id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
 <p>Install the documentation dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[docs]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[docs]"</span>
 </pre></div>
 </div>
 </section>
@@ -574,7 +589,7 @@ make<span class="w"> </span>clean
 <h3>Numpy Docstring Format<a class="headerlink" href="#numpy-docstring-format" title="Link to this heading">#</a></h3>
 <p>Use numpy-style docstrings with sections like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">example_function</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Short description.</span>
 
 <span class="sd">    Longer description with more details.</span>
@@ -601,8 +616,8 @@ make<span class="w"> </span>clean
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Author et al. (Year), &quot;Title&quot;, Journal.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    .. [1] Author et al. (Year), "Title", Journal.</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 </section>

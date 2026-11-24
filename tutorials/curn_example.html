@@ -31,6 +31,7 @@
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
   
   <!-- So that users can add custom icons -->
@@ -198,6 +199,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../components/noise_signals.html">
     Noise and Signal Components
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../components/chromatic_noise.html">
+    Chromatic noise analyses
   </a>
 </li>
 
@@ -397,6 +405,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../components/chromatic_noise.html">
+    Chromatic noise analyses
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../components/priors_spectra.html">
     GP Priors and Spectra
   </a>
@@ -544,14 +559,14 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">__path__</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="s1">&#39;../../data&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">__path__</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="s1">'../../data'</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ds</span><span class="o">.</span><span class="n">Pulsar</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">datapath</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*v1p1*.feather&#39;</span><span class="p">))][:</span><span class="mi">10</span><span class="p">]</span> <span class="c1"># only 10 pulsars for now</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ds</span><span class="o">.</span><span class="n">Pulsar</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">datapath</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'*v1p1*.feather'</span><span class="p">))][:</span><span class="mi">10</span><span class="p">]</span> <span class="c1"># only 10 pulsars for now</span>
 </pre></div>
 </div>
 </div>
@@ -568,14 +583,14 @@ you will have to do something different.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># common_parnames are the names of parameters</span>
 <span class="c1"># that are shared for all pulsars.</span>
-<span class="n">mypl</span><span class="p">,</span> <span class="n">common_parnames</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">make_combined_crn</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">powerlaw</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">powerlaw</span><span class="p">,</span> <span class="n">crn_prefix</span><span class="o">=</span><span class="s1">&#39;gw_&#39;</span><span class="p">)</span>
+<span class="n">mypl</span><span class="p">,</span> <span class="n">common_parnames</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">make_combined_crn</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">powerlaw</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">powerlaw</span><span class="p">,</span> <span class="n">crn_prefix</span><span class="o">=</span><span class="s1">'gw_'</span><span class="p">)</span>
 
 <span class="n">psls</span> <span class="o">=</span> <span class="p">[</span><span class="n">ds</span><span class="o">.</span><span class="n">PulsarLikelihood</span><span class="p">([</span><span class="n">psr</span><span class="o">.</span><span class="n">residuals</span><span class="p">,</span>
                              <span class="n">ds</span><span class="o">.</span><span class="n">makenoise_measurement</span><span class="p">(</span><span class="n">psr</span><span class="p">,</span> <span class="n">psr</span><span class="o">.</span><span class="n">noisedict</span><span class="p">),</span>
                              <span class="n">ds</span><span class="o">.</span><span class="n">makegp_ecorr</span><span class="p">(</span><span class="n">psr</span><span class="p">,</span> <span class="n">psr</span><span class="o">.</span><span class="n">noisedict</span><span class="p">),</span>
                              <span class="n">ds</span><span class="o">.</span><span class="n">makegp_timing</span><span class="p">(</span><span class="n">psr</span><span class="p">,</span> <span class="n">svd</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span> <span class="k">for</span> <span class="n">psr</span> <span class="ow">in</span> <span class="n">psrs</span><span class="p">]</span>
 
-<span class="n">commongp</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">makecommongp_fourier</span><span class="p">(</span><span class="n">psrs</span><span class="p">,</span> <span class="n">mypl</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">getspan</span><span class="p">(</span><span class="n">psrs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;red_noise&#39;</span><span class="p">,</span>
+<span class="n">commongp</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">makecommongp_fourier</span><span class="p">(</span><span class="n">psrs</span><span class="p">,</span> <span class="n">mypl</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">getspan</span><span class="p">(</span><span class="n">psrs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">'red_noise'</span><span class="p">,</span>
                                    <span class="n">common</span><span class="o">=</span><span class="n">common_parnames</span><span class="p">)</span>
 
 <span class="n">array_likelihood</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">ArrayLikelihood</span><span class="p">(</span><span class="n">psls</span><span class="p">,</span> <span class="n">commongp</span><span class="o">=</span><span class="n">commongp</span><span class="p">)</span>
@@ -644,15 +659,15 @@ rolling and unrolling seems to cause significant overhead.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npsampler</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">chain</span> <span class="o">=</span> <span class="n">npsampler</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<span class="c1"># chain.to_csv(&#39;chain.feather&#39;, index=False)</span>
+<span class="c1"># chain.to_csv('chain.feather', index=False)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="s1">&#39;gw_gamma&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\gamma_</span><span class="si">{gw}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">chain</span><span class="p">[</span><span class="s1">'gw_gamma'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$\gamma_</span><span class="si">{gw}</span><span class="s2">$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
